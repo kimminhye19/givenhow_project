@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">기분(Given)어때? </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+              <a class="nav-link " href="/">Home
+                  <span class="visually-hidden">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+          </li> -->
+          <li class="nav-item">
+              <a class="nav-link active" href="/board/list">Community</a>
+          </li>
+<!--          <li class="nav-item dropdown">-->
+<!--              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="mypage">My page</a>-->
+<!--              <div class="dropdown-menu"  aria-labelledby="mypage">-->
+<!--                  <a class="dropdown-item" href="#"> ㅇ </a>-->
+<!--                  <a class="dropdown-item" href="#"> Q&A </a>-->
+<!--                  <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                  <div class="dropdown-divider"></div>-->
+<!--                  <a class="dropdown-item" href="#">Separated link</a>-->
+<!--              </div>-->
+<!--          </li>-->
+      </ul>
+<!--            <form action="/accounts/logout/" method="GET" style="margin: 0px 10px 0px 0px;">-->
+<!--                <button type="submit" class="btn btn-danger">로그아웃</button>-->
+<!--            </form>-->
+        {% if users == ''%}
+              <form method="GET" action="/accounts/existing_login/" style="margin: 0px 10px 0px 0px;">
+                  <button class="btn btn-danger" type="login">로그인</button>
+              </form>
+              <form method="GET" action="/accounts/signup/" style="margin: 0px 10px 0px 0px;">
+                  <button class="btn btn-danger" type="submit">회원가입</button>
+              </form>
+        {% else %}
+              <form action="/accounts/logout/" method="GET" style="margin: 0px 10px 0px 0px;">
+                <button type="submit" class="btn btn-danger">로그아웃</button>
+              </form>
+        {% endif %}
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class = "card">
+    <div class="card-header">
+        <h5 class="card-title">{{board.title}}</h5>
+        <small>by {{board.writer}}</small>
+    </div>
+    <div class="class-body">
+        <p style="text-align:right"><small>created at {{board.write_dttm}}</th>
+                    </small>modified at {{updated_dttm}}</small></p>
+        <p class="card-text">{{board.contents}}</p>
+        <div class="text-end">
+                <button type = "button"
+                class = "btn btn-primary"
+                onclick = "location.href = '/board/list'">돌아가기</button>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+<!--<div class = "row mt-5">-->
+<!--    <div class = "col-12">-->
+
+<!--        <div class = "form-group">-->
+<!--            <label for = "title">제목</label>-->
+<!--            <input type = "text"-->
+<!--                   class = "form-control"-->
+<!--                   id = "title"-->
+<!--                   value = "{{board.title}}" readonly>-->
+<!--            <label for = "contents">내용</label>-->
+<!--            <textarea class ="form-control" readonly>{{board.contents}}</textarea>-->
+<!--        </div>-->
+
+<!--               <button type = "button"-->
+<!--                class = "btn btn-primary"-->
+<!--                onclick = "location.href = '/board/list'">돌아가기</button>-->
+<!--                <button type = "button"-->
+<!--                class = "btn btn-primary"-->
+<!--                onclick = "location.href = '/board/detail/update/{{board.pk}}'">수정하기</button>-->
+<!--                <button type = "button"-->
+<!--                class = "btn btn-primary"-->
+<!--                onclick = "location.href = '/board/detail/delete/{{board.pk}}'">삭제하기</button>-->
+
+<!--     </div>-->
+<!--</div>-->

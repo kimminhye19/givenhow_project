@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <title>기분(Given)어때</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>GoSlideshow HTML5 Canvas</title>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">기분(Given)어때 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/">Home
+                  <span class="visually-hidden">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="#">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Community</a>
+          </li>
+<!--          <li class="nav-item dropdown">-->
+<!--              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="mypage">My page</a>-->
+<!--              <div class="dropdown-menu"  aria-labelledby="mypage">-->
+<!--                  <a class="dropdown-item" href="#"> ㅇ </a>-->
+<!--                  <a class="dropdown-item" href="#"> Q&A </a>-->
+<!--                  <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                  <div class="dropdown-divider"></div>-->
+<!--                  <a class="dropdown-item" href="#">Separated link</a>-->
+<!--              </div>-->
+<!--          </li>-->
+      </ul>
+        {% if users == ''%}
+              <form method="GET" action="/accounts/existing_login/" style="margin: 0px 10px 0px 0px;">
+                  <button class="btn btn-danger" type="login">로그인</button>
+              </form>
+              <form method="GET" action="/accounts/signup/" style="margin: 0px 10px 0px 0px;">
+                  <button class="btn btn-danger" type="submit">회원가입</button>
+              </form>
+        {% else %}
+              <form action="/accounts/logout/" method="GET" style="margin: 0px 10px 0px 0px;">
+                <button type="submit" class="btn btn-danger">로그아웃</button>
+              </form>
+        {% endif %}
+    </div>
+  </div>
+</nav>
+
+<script>
+
+</script>
+
+ <style>
+      .a {
+        background-color: #FFE6CE;
+        //margin:0% 1% 0% 1%;
+      }
+      .b {
+        background-color: #000000;
+        opacity: 0.3;
+        padding: 0px 0px 0px 0px;
+        width: 720px;
+        height: 470px;
+      }
+      .c {
+        padding: 90px 0px 0px 0px;
+        width: 720px;
+        height: 470px;
+      }
+      //.div { text-align: center; }
+
+      .d {
+        text-align: center;
+        width: 30%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 17px;
+        }
+
+      .d_head {
+        background: #ff7851;
+        text-align: center;
+        color: white;
+        width: 10%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 17px;
+        }
+
+      .d_click {
+        text-align: center;
+        background: #ffce67;
+        width: 30%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 17px;
+        }
+
+      .d:hover {
+        background: #ffce67; // #ff7851; //
+        }
+
+      .like_font {
+        color: #ff7851;
+        text-decoration: none;
+        }
+      .like_font:hover {
+        color: white;
+        //color: #ff7851;
+        }
+
+    </style>
+
+<div class="btn-group-vertical mt-5" style="width: 20%; height: 60%;">
+  <button type="button" class="btn btn-danger" style="font-size: 20px;" >Project Info</button>
+  <button type="button" class="btn btn-danger" style="font-size: 20px;">김민혜</button>
+  <button type="button" class="btn btn-danger" style="font-size: 20px;">김보라</button>
+  <button type="button" class="btn btn-danger" style="font-size: 20px;">김하늘</button>
+  <button type="button" class="btn btn-danger" style="font-size: 20px;">이민아</button>
+</div>
+
+<div style="display: inline-block; transform: translate(5%, -150%);">
+    <h1> About, Given Trip　　　　　　　　　　　　　　　</h1>
+        <hr>
+</div>
+
+
+{% endblock %}

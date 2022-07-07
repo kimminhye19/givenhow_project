@@ -1,0 +1,1189 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="color: #ff7851;">
+<h1 class="mt-5" align="center" >Given Trip Test Start</h1>    
+</div>
+    <div class="col-12 text-center">
+       <form name="myForm" method="POST" action=".">
+          {% csrf_token %}
+          <p>
+    <!--=========================================== 첫번째 드롭다운 시작 ===========================================-->
+            <div class="mt-5">
+                <h6>
+                    최근(3년 이내) 다녀온 여행지 중 만족도가 높았던 3곳을 선택해 주세요. <br><br>
+                    만족한 여행지가 3곳보다 적은 경우 만족도가 낮았던 여행을 포함하여 응답해 주세요.<br><br>
+                    응답하신 지역을 기반으로 추천이 이루어집니다.<br><br>
+                    여행 테마는 추천 받고 싶은 여행지의 성격을 고려하여 선택해 주세요.
+                </h6>
+            </div>
+            <br>
+            <div class="mt-4">
+              <h5 style="display: inline-block;"> 여행지 1　</h5>
+              <select name="sido1" size="1" onChange="redirect(this.options.selectedIndex)">
+                 <option value="">서울특별시</option>
+                 <option value="">부산광역시</option>
+                 <option value="">대구광역시</option>
+                 <option value="">인천광역시</option>
+                 <option value="">대전광역시</option>
+                 <option value="">세종특별자치시</option>
+                 <option value="">광주광역시</option>
+                 <option value="">울산광역시</option>
+                 <option value="">경기도</option>
+                 <option value="">강원도</option>
+                 <option value="">충청북도</option>
+                 <option value="">충청남도</option>
+                 <option value="">경상북도</option>
+                 <option value="">경상남도</option>
+                 <option value="">전라북도</option>
+                 <option value="">전라남도</option>
+                 <option value="">제주특별자치도</option>
+              </select>
+              <select name="sigungu1" size="1">
+                 <option value="11230">강남구</option>
+                 <option value="11250">강동구</option>
+                 <option value="1190">강북구</option>
+                 <option value="11160">강서구</option>
+                 <option value="11210">관악구</option>
+                 <option value="1150">광진구</option>
+                 <option value="11170">구로구</option>
+                 <option value="11180">금천구</option>
+                 <option value="11110">노원구</option>
+                 <option value="11100">도봉구</option>
+                 <option value="1160">동대문구</option>
+                 <option value="11200">동작구</option>
+                 <option value="11140">마포구</option>
+                 <option value="11130">서대문구</option>
+                 <option value="11220">서초구</option>
+                 <option value="1140">성동구</option>
+                 <option value="1180">성북구</option>
+                 <option value="11240">송파구</option>
+                 <option value="11150">양천구</option>
+                 <option value="11190">영등포구</option>
+                 <option value="1130">용산구</option>
+                 <option value="11120">은평구</option>
+                 <option value="1110">종로구</option>
+                 <option value="1120">중구</option>
+                 <option value="1170">중랑구</option>
+              </select>
+              <select name="satisfaction1" size="1">
+                 <option value="4">매우만족</option>
+                 <option value="3">만족</option>
+                 <option value="2">보통</option>
+                 <option value="1">불만족</option>
+              </select> <br><br>
+        <!--=========================================== 첫번째 드롭다운 끝 ===========================================-->
+
+        <!--=========================================== 두번째 드롭다운 시작 ===========================================-->
+              <h5 style="display: inline-block;"> 여행지 2　</h5>
+              <select name="sido2" size="1" onChange="redirect2(this.options.selectedIndex)">
+                 <option value="">서울특별시</option>
+                 <option value="">부산광역시</option>
+                 <option value="">대구광역시</option>
+                 <option value="">인천광역시</option>
+                 <option value="">대전광역시</option>
+                 <option value="">세종특별자치시</option>
+                 <option value="">광주광역시</option>
+                 <option value="">울산광역시</option>
+                 <option value="">경기도</option>
+                 <option value="">강원도</option>
+                 <option value="">충청북도</option>
+                 <option value="">충청남도</option>
+                 <option value="">경상북도</option>
+                 <option value="">경상남도</option>
+                 <option value="">전라북도</option>
+                 <option value="">전라남도</option>
+                 <option value="">제주특별자치도</option>
+              </select>
+              <select name="sigungu2" size="1">
+                 <option value="11230">강남구</option>
+                 <option value="11250">강동구</option>
+                 <option value="1190">강북구</option>
+                 <option value="11160">강서구</option>
+                 <option value="11210">관악구</option>
+                 <option value="1150">광진구</option>
+                 <option value="11170">구로구</option>
+                 <option value="11180">금천구</option>
+                 <option value="11110">노원구</option>
+                 <option value="11100">도봉구</option>
+                 <option value="1160">동대문구</option>
+                 <option value="11200">동작구</option>
+                 <option value="11140">마포구</option>
+                 <option value="11130">서대문구</option>
+                 <option value="11220">서초구</option>
+                 <option value="1140">성동구</option>
+                 <option value="1180">성북구</option>
+                 <option value="11240">송파구</option>
+                 <option value="11150">양천구</option>
+                 <option value="11190">영등포구</option>
+                 <option value="1130">용산구</option>
+                 <option value="11120">은평구</option>
+                 <option value="1110">종로구</option>
+                 <option value="1120">중구</option>
+                 <option value="1170">중랑구</option>
+              </select>
+              <select name="satisfaction2" size="1">
+                 <option value="4">매우만족</option>
+                 <option value="3">만족</option>
+                 <option value="2">보통</option>
+                 <option value="1">불만족</option>
+              </select> <br><br>
+        <!--=========================================== 두번째 드롭다운 끝 ===========================================-->
+
+
+        <!--=========================================== 세번째 드롭다운 시작 ===========================================-->
+              <h5 style="display: inline-block;"> 여행지 3　</h5>
+              <select name="sido3" size="1" onChange="redirect3(this.options.selectedIndex)">
+                 <option value="">서울특별시</option>
+                 <option value="">부산광역시</option>
+                 <option value="">대구광역시</option>
+                 <option value="">인천광역시</option>
+                 <option value="">대전광역시</option>
+                 <option value="">세종특별자치시</option>
+                 <option value="">광주광역시</option>
+                 <option value="">울산광역시</option>
+                 <option value="">경기도</option>
+                 <option value="">강원도</option>
+                 <option value="">충청북도</option>
+                 <option value="">충청남도</option>
+                 <option value="">경상북도</option>
+                 <option value="">경상남도</option>
+                 <option value="">전라북도</option>
+                 <option value="">전라남도</option>
+                 <option value="">제주특별자치도</option>
+              </select>
+              <select name="sigungu3" size="1">
+                 <option value="11230">강남구</option>
+                 <option value="11250">강동구</option>
+                 <option value="1190">강북구</option>
+                 <option value="11160">강서구</option>
+                 <option value="11210">관악구</option>
+                 <option value="1150">광진구</option>
+                 <option value="11170">구로구</option>
+                 <option value="11180">금천구</option>
+                 <option value="11110">노원구</option>
+                 <option value="11100">도봉구</option>
+                 <option value="1160">동대문구</option>
+                 <option value="11200">동작구</option>
+                 <option value="11140">마포구</option>
+                 <option value="11130">서대문구</option>
+                 <option value="11220">서초구</option>
+                 <option value="1140">성동구</option>
+                 <option value="1180">성북구</option>
+                 <option value="11240">송파구</option>
+                 <option value="11150">양천구</option>
+                 <option value="11190">영등포구</option>
+                 <option value="1130">용산구</option>
+                 <option value="11120">은평구</option>
+                 <option value="1110">종로구</option>
+                 <option value="1120">중구</option>
+                 <option value="1170">중랑구</option>
+              </select>
+              <select name="satisfaction3" size="1">
+                 <option value="4">매우만족</option>
+                 <option value="3">만족</option>
+                 <option value="2">보통</option>
+                 <option value="1">불만족</option>
+              </select>
+          </div>
+
+    <!--=========================================== 세번째 드롭다운 끝 ===========================================-->
+
+    <!--=========================================== 테마 체크박스 시작 ===========================================-->
+           <div class="mt-5" align="center">
+               <h5 style="display: inline-block; vertical-align: top;" > 여행 테마 　<br> (1개 선택) 　</h5>
+               <div style="display: inline-block; text-align:left; vertical-align: top; width: 10%;">
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0101">자연관광지</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0102">관광자원</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0201">역사관광지</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0202">휴양관광지</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0203">체험관광지</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0204">산업관광지</label><br>
+               </div>
+               <div style="display: inline-block; text-align:left; vertical-align: top; width: 10%;">
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0205">건축/조형물</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0206">문화시설</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0207">축제</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0208">공연/행사</label><br>
+            <!--      <label style="margin-right:5px;"><input type="checkbox" name="theme" value="C0112">가족코스</label>-->
+            <!--      <label style="margin-right:5px;"><input type="checkbox" name="theme" value="C0113">나홀로코스</label>-->
+            <!--      <label style="margin-right:5px;"><input type="checkbox" name="theme" value="C0114">힐링코스</label>-->
+            <!--      <label style="margin-right:5px;"><input type="checkbox" name="theme" value="C0115">도보코스</label>-->
+            <!--      <label style="margin-right:5px;"><input type="checkbox" name="theme" value="C0116">캠핑코스</label><br>-->
+            <!--      <label style="margin-right:5px;"><input type="checkbox" name="theme" value="C0117">맛코스</label>-->
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0301">레포츠소개</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0302">육상 레포츠</label><br>
+               </div>
+               <div style="display: inline-block; text-align:left; vertical-align: top; width: 10%;">
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0303">수상 레포츠</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0304">항공 레포츠</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0305">복합 레포츠</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="B0201">숙박시설</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0401">쇼핑</label><br>
+                  <label style="margin-right:5px;"><input type="checkbox" name="theme" value="A0502">음식점</label>
+               </div>
+           </div>
+    <!--=========================================== 테마 체크박스 끝 ===========================================-->
+           <div class="container">
+               <div class="col-12 ">
+                   <div class="row mt-3">
+                       <div class="col-12 text-center" style="color: red;">
+                          {{error}}
+                       </div>
+                   </div>
+                   <br>
+               </div>
+           </div>
+           <button type="submit" class="btn btn-danger mt-3">제출하기</button>
+          </p>
+       </form>
+</div>
+
+<script>
+        <!--=========================================== 첫번째 드롭다운 시작 ===========================================-->
+        var groups=document.myForm.sido1.options.length
+        var group=new Array(groups)
+        for (i=0; i<groups; i++)
+        group[i]=new Array()
+
+        <!---------- 아래와 같은 방법으로 각 항목을 설정 합니다 ---------------->
+
+        <!-- 서울특별시 -->
+        group[0][0]=new Option("강남구","11230")
+        group[0][1]=new Option("강동구","11250")
+        group[0][2]=new Option("강북구","1190")
+        group[0][3]=new Option("강서구","11160")
+        group[0][4]=new Option("관악구","11210")
+        group[0][5]=new Option("광진구","1150")
+        group[0][6]=new Option("구로구","11170")
+        group[0][7]=new Option("금천구","11180")
+        group[0][8]=new Option("노원구","11110")
+        group[0][9]=new Option("도봉구","11100")
+        group[0][10]=new Option("동대문구","1160")
+        group[0][11]=new Option("동작구","11200")
+        group[0][12]=new Option("마포구","11140")
+        group[0][13]=new Option("서대문구","11130")
+        group[0][14]=new Option("서초구","11220")
+        group[0][15]=new Option("성동구","1140")
+        group[0][16]=new Option("성북구","1180")
+        group[0][17]=new Option("송파구","11240")
+        group[0][18]=new Option("양천구","11150")
+        group[0][19]=new Option("영등포구","11190")
+        group[0][20]=new Option("용산구","1130")
+        group[0][21]=new Option("은평구","11120")
+        group[0][22]=new Option("종로구","1110")
+        group[0][23]=new Option("중구","1120")
+        group[0][24]=new Option("중랑구","1170")
+
+
+        <!-- 부산광역시 -->
+        group[1][0]=new Option("강서구","21120")
+        group[1][1]=new Option("금정구","21110")
+        group[1][2]=new Option("기장군","21310")
+        group[1][3]=new Option("남구","2170")
+        group[1][4]=new Option("동구","2130")
+        group[1][5]=new Option("동래구","2160")
+        group[1][6]=new Option("부산진구","2150")
+        group[1][7]=new Option("북구","2180")
+        group[1][8]=new Option("사상구","21150")
+        group[1][9]=new Option("사하구","21100")
+        group[1][10]=new Option("서구","2120")
+        group[1][11]=new Option("수영구","21140")
+        group[1][12]=new Option("연제구","21130")
+        group[1][13]=new Option("영도구","2140")
+        group[1][14]=new Option("중구","2110")
+        group[1][15]=new Option("해운대구","2190")
+
+        <!-- 대구광역시 -->
+        group[2][0]=new Option("남구","2240")
+        group[2][1]=new Option("달서구","2270")
+        group[2][2]=new Option("달성군","22310")
+        group[2][3]=new Option("동구","2220")
+        group[2][4]=new Option("북구","2250")
+        group[2][5]=new Option("서구","2230")
+        group[2][6]=new Option("수성구","2260")
+        group[2][7]=new Option("중구","2210")
+
+        <!-- 인천광역시 -->
+        group[3][0]=new Option("강화군","23310")
+        group[3][1]=new Option("계양구","2370")
+        group[3][2]=new Option("남동구","2350")
+        group[3][3]=new Option("동구","2320")
+        group[3][4]=new Option("미추홀구","2330")
+        group[3][5]=new Option("부평구","2360")
+        group[3][6]=new Option("서구","2380")
+        group[3][7]=new Option("연수구","2340")
+        group[3][8]=new Option("옹진군","23320")
+        group[3][9]=new Option("중구","2310")
+
+        <!-- 대전광역시 -->
+        group[4][0]=new Option("대덕구","2550")
+        group[4][1]=new Option("동구","2510")
+        group[4][2]=new Option("서구","2530")
+        group[4][3]=new Option("유성구","2540")
+        group[4][4]=new Option("중구","2520")
+
+        <!-- 세종특별자치시 -->
+        group[5][0]=new Option("가람동","2910")
+        group[5][1]=new Option("고운동","2910")
+        group[5][2]=new Option("금남면","2910")
+        group[5][3]=new Option("나성동","2910")
+        group[5][4]=new Option("다정동","2910")
+        group[5][5]=new Option("대평동","2910")
+        group[5][6]=new Option("도담동","2910")
+        group[5][7]=new Option("반곡동","2910")
+        group[5][8]=new Option("보람동","2910")
+        group[5][9]=new Option("부강면","2910")
+        group[5][10]=new Option("산울동","2910")
+        group[5][11]=new Option("새롬동","2910")
+        group[5][12]=new Option("소담동","2910")
+        group[5][13]=new Option("소정면","2910")
+        group[5][14]=new Option("아름동","2910")
+        group[5][15]=new Option("어진동","2910")
+        group[5][16]=new Option("연기면","2910")
+        group[5][17]=new Option("연동면","2910")
+        group[5][18]=new Option("연서면","2910")
+        group[5][19]=new Option("장군면","2910")
+        group[5][20]=new Option("전동면","2910")
+        group[5][21]=new Option("전의면","2910")
+        group[5][22]=new Option("조치원읍","2910")
+        group[5][23]=new Option("종촌동","2910")
+        group[5][24]=new Option("집현동","2910")
+        group[5][25]=new Option("한솔동","2910")
+        group[5][26]=new Option("합강동","2910")
+        group[5][27]=new Option("해밀동","2910")
+
+        <!-- 광주광역시 -->
+        group[6][0]=new Option("광산구","2450")
+        group[6][1]=new Option("남구","2430")
+        group[6][2]=new Option("동구","2410")
+        group[6][3]=new Option("북구","2440")
+        group[6][4]=new Option("서구","2420")
+
+        <!-- 울산광역시 -->
+        group[7][0]=new Option("남구","2620")
+        group[7][1]=new Option("동구","2630")
+        group[7][2]=new Option("북구","2640")
+        group[7][3]=new Option("울주군","26310")
+        group[7][4]=new Option("중구","2610")
+
+        <!-- 경기도 -->
+        group[8][0]=new Option("가평군","31370")
+        group[8][1]=new Option("고양시","31100")
+        group[8][2]=new Option("과천시","31110")
+        group[8][3]=new Option("광명시","3160")
+        group[8][4]=new Option("광주시","31250")
+        group[8][5]=new Option("구리시","31120")
+        group[8][6]=new Option("군포시","31160")
+        group[8][7]=new Option("김포시","31230")
+        group[8][8]=new Option("남양주시","31130")
+        group[8][9]=new Option("동두천시","3180")
+        group[8][10]=new Option("부천시","3150")
+        group[8][11]=new Option("성남시","3120")
+        group[8][12]=new Option("수원시","3110")
+        group[8][13]=new Option("시흥시","31150")
+        group[8][14]=new Option("안산시","3190")
+        group[8][15]=new Option("안성시","31220")
+        group[8][16]=new Option("안양시","3140")
+        group[8][17]=new Option("양주시","31260")
+        group[8][18]=new Option("양평군","31380")
+        group[8][19]=new Option("여주시","31280")
+        group[8][20]=new Option("연천군","31350")
+        group[8][21]=new Option("오산시","31140")
+        group[8][22]=new Option("용인시","31190")
+        group[8][23]=new Option("의왕시","31170")
+        group[8][24]=new Option("의정부시","3130")
+        group[8][25]=new Option("이천시","31210")
+        group[8][26]=new Option("파주시","31200")
+        group[8][27]=new Option("평택시","3170")
+        group[8][28]=new Option("포천시","31270")
+        group[8][29]=new Option("하남시","31180")
+        group[8][30]=new Option("화성시","31240")
+
+        <!-- 강원도 -->
+        group[9][0]=new Option("강릉시","3230")
+        group[9][1]=new Option("고성군","32400")
+        group[9][2]=new Option("동해시","3240")
+        group[9][3]=new Option("삼척시","3270")
+        group[9][4]=new Option("속초시","3260")
+        group[9][5]=new Option("양구군","32380")
+        group[9][6]=new Option("양야군","32410")
+        group[9][7]=new Option("영월군","32330")
+        group[9][8]=new Option("원주시","3220")
+        group[9][9]=new Option("인제군","32390")
+        group[9][10]=new Option("정선군","32350")
+        group[9][11]=new Option("철원군","32360")
+        group[9][12]=new Option("춘천시","3210")
+        group[9][13]=new Option("태백시","3250")
+        group[9][14]=new Option("평창군","32340")
+        group[9][15]=new Option("홍천군","32310")
+        group[9][16]=new Option("화천군","32370")
+        group[9][17]=new Option("횡성군","32320")
+
+        <!-- 충청북도 -->
+        group[10][0]=new Option("괴산군","33360")
+        group[10][1]=new Option("단양군","33380")
+        group[10][2]=new Option("보은군","33320")
+        group[10][3]=new Option("영동군","33340")
+        group[10][4]=new Option("옥천군","33330")
+        group[10][5]=new Option("음성군","33370")
+        group[10][6]=new Option("제천시","3330")
+        group[10][7]=new Option("증평군","33390")
+        group[10][8]=new Option("진천군","33350")
+        group[10][9]=new Option("청주시","3340")
+        group[10][10]=new Option("충주시","3320")
+
+        <!-- 충청남도 -->
+        group[11][0]=new Option("계룡시","3470")
+        group[11][1]=new Option("공주시","3420")
+        group[11][2]=new Option("금산군","34310")
+        group[11][3]=new Option("논산시","3460")
+        group[11][4]=new Option("당진시","3480")
+        group[11][5]=new Option("보령시","3430")
+        group[11][6]=new Option("부여군","34330")
+        group[11][7]=new Option("서산시","3450")
+        group[11][8]=new Option("서천군","34340")
+        group[11][9]=new Option("아산시","3440")
+        group[11][10]=new Option("예산군","34370")
+        group[11][11]=new Option("천안시","3410")
+        group[11][12]=new Option("청양군","34350")
+        group[11][13]=new Option("태안군","34380")
+        group[11][14]=new Option("홍성군","34360")
+
+        <!-- 경상북도 -->
+        group[12][0]=new Option("경산시","37100")
+        group[12][1]=new Option("경주시","3720")
+        group[12][2]=new Option("고령군","37370")
+        group[12][3]=new Option("구미시","3750")
+        group[12][4]=new Option("군위군","37310")
+        group[12][5]=new Option("김천시","3730")
+        group[12][6]=new Option("문경시","3790")
+        group[12][7]=new Option("봉화군","37410")
+        group[12][8]=new Option("상주시","3780")
+        group[12][9]=new Option("성주군","37380")
+        group[12][10]=new Option("안동시","3740")
+        group[12][11]=new Option("영덕군","37350")
+        group[12][12]=new Option("영양군","37340")
+        group[12][13]=new Option("영주시","3760")
+        group[12][14]=new Option("영천시","3770")
+        group[12][15]=new Option("예천군","37400")
+        group[12][16]=new Option("울릉군","37430")
+        group[12][17]=new Option("울진군","37420")
+        group[12][18]=new Option("의성군","37320")
+        group[12][19]=new Option("청도군","37360")
+        group[12][20]=new Option("청송군","37330")
+        group[12][21]=new Option("칠곡군","37390")
+        group[12][22]=new Option("포항시","3710")
+
+        <!-- 경상남도 -->
+        group[13][0]=new Option("거제시","3890")
+        group[13][1]=new Option("거창군","38390")
+        group[13][2]=new Option("고성군","38340")
+        group[13][3]=new Option("김해시","3870")
+        group[13][4]=new Option("남해군","38350")
+        group[13][5]=new Option("밀양시","3880")
+        group[13][6]=new Option("사천시","3860")
+        group[13][7]=new Option("산청군","38370")
+        group[13][8]=new Option("양산시","38100")
+        group[13][9]=new Option("의령군","38310")
+        group[13][10]=new Option("진주시","3830")
+        group[13][11]=new Option("창녕군","38330")
+        group[13][12]=new Option("창원시","38110")
+        group[13][13]=new Option("통영시","3850")
+        group[13][14]=new Option("하동군","38360")
+        group[13][15]=new Option("함안군","38320")
+        group[13][16]=new Option("함양군","38380")
+        group[13][17]=new Option("합천군","38400")
+
+        <!-- 전라북도 -->
+        group[14][0]=new Option("고창군","35370")
+        group[14][1]=new Option("군산시","3520")
+        group[14][2]=new Option("김제시","3560")
+        group[14][3]=new Option("남원시","3550")
+        group[14][4]=new Option("무주군","35330")
+        group[14][5]=new Option("부안군","35380")
+        group[14][6]=new Option("순창군","35360")
+        group[14][7]=new Option("완주군","35310")
+        group[14][8]=new Option("익산시","3530")
+        group[14][9]=new Option("임실군","35350")
+        group[14][10]=new Option("장수군","35340")
+        group[14][11]=new Option("전주시","3510")
+        group[14][12]=new Option("정읍시","3540")
+        group[14][13]=new Option("진안군","35320")
+
+        <!-- 전라남도 -->
+        group[15][0]=new Option("강진군","36390")
+        group[15][1]=new Option("고흥군","36350")
+        group[15][2]=new Option("곡성군","36320")
+        group[15][3]=new Option("광양시","3660")
+        group[15][4]=new Option("구례군","36330")
+        group[15][5]=new Option("나주시","3640")
+        group[15][6]=new Option("담양군","36310")
+        group[15][7]=new Option("목포시","3610")
+        group[15][8]=new Option("무안군","36420")
+        group[15][9]=new Option("보성군","36360")
+        group[15][10]=new Option("순천시","3630")
+        group[15][11]=new Option("신안군","36480")
+        group[15][12]=new Option("여수시","3620")
+        group[15][13]=new Option("영광군","36440")
+        group[15][14]=new Option("영암군","36410")
+        group[15][15]=new Option("완도군","36460")
+        group[15][16]=new Option("장성군","36450")
+        group[15][17]=new Option("장흥군","36380")
+        group[15][18]=new Option("진도군","36470")
+        group[15][19]=new Option("함평군","36430")
+        group[15][20]=new Option("해남군","36400")
+        group[15][21]=new Option("화순군","36370")
+
+        <!-- 제주특별자치도 -->
+        group[16][0]=new Option("서귀포시","3920")
+        group[16][1]=new Option("제주시","3910")
+
+
+        var temp=document.myForm.sigungu1
+        function redirect(x){
+        for (m=temp.options.length-1;m>0;m--)
+        temp.options[m]=null
+        for (i=0;i<group[x].length;i++){
+        temp.options[i]=new Option(group[x][i].text,group[x][i].value)
+        }
+        temp.options[0].selected=true
+        }
+        function go(){
+        location=temp.options[temp.selectedIndex].value
+        }
+        <!--=========================================== 첫번째 드롭다운 끝 ===========================================-->
+
+
+        <!--=========================================== 두번째 드롭다운 시작 ===========================================-->
+        var groups2=document.myForm.sido2.options.length
+        var group2=new Array(groups2)
+        for (i=0; i<groups2; i++)
+        group2[i]=new Array()
+
+        <!---------- 아래와 같은 방법으로 각 항목을 설정 합니다 ---------------->
+
+        <!-- 서울특별시 -->
+        group2[0][0]=new Option("강남구","11230")
+        group2[0][1]=new Option("강동구","11250")
+        group2[0][2]=new Option("강북구","1190")
+        group2[0][3]=new Option("강서구","11160")
+        group2[0][4]=new Option("관악구","11210")
+        group2[0][5]=new Option("광진구","1150")
+        group2[0][6]=new Option("구로구","11170")
+        group2[0][7]=new Option("금천구","11180")
+        group2[0][8]=new Option("노원구","11110")
+        group2[0][9]=new Option("도봉구","11100")
+        group2[0][10]=new Option("동대문구","1160")
+        group2[0][11]=new Option("동작구","11200")
+        group2[0][12]=new Option("마포구","11140")
+        group2[0][13]=new Option("서대문구","11130")
+        group2[0][14]=new Option("서초구","11220")
+        group2[0][15]=new Option("성동구","1140")
+        group2[0][16]=new Option("성북구","1180")
+        group2[0][17]=new Option("송파구","11240")
+        group2[0][18]=new Option("양천구","11150")
+        group2[0][19]=new Option("영등포구","11190")
+        group2[0][20]=new Option("용산구","1130")
+        group2[0][21]=new Option("은평구","11120")
+        group2[0][22]=new Option("종로구","1110")
+        group2[0][23]=new Option("중구","1120")
+        group2[0][24]=new Option("중랑구","1170")
+
+
+        <!-- 부산광역시 -->
+        group2[1][0]=new Option("강서구","21120")
+        group2[1][1]=new Option("금정구","21110")
+        group2[1][2]=new Option("기장군","21310")
+        group2[1][3]=new Option("남구","2170")
+        group2[1][4]=new Option("동구","2130")
+        group2[1][5]=new Option("동래구","2160")
+        group2[1][6]=new Option("부산진구","2150")
+        group2[1][7]=new Option("북구","2180")
+        group2[1][8]=new Option("사상구","21150")
+        group2[1][9]=new Option("사하구","21100")
+        group2[1][10]=new Option("서구","2120")
+        group2[1][11]=new Option("수영구","21140")
+        group2[1][12]=new Option("연제구","21130")
+        group2[1][13]=new Option("영도구","2140")
+        group2[1][14]=new Option("중구","2110")
+        group2[1][15]=new Option("해운대구","2190")
+
+        <!-- 대구광역시 -->
+        group2[2][0]=new Option("남구","2240")
+        group2[2][1]=new Option("달서구","2270")
+        group2[2][2]=new Option("달성군","22310")
+        group2[2][3]=new Option("동구","2220")
+        group2[2][4]=new Option("북구","2250")
+        group2[2][5]=new Option("서구","2230")
+        group2[2][6]=new Option("수성구","2260")
+        group2[2][7]=new Option("중구","2210")
+
+        <!-- 인천광역시 -->
+        group2[3][0]=new Option("강화군","23310")
+        group2[3][1]=new Option("계양구","2370")
+        group2[3][2]=new Option("남동구","2350")
+        group2[3][3]=new Option("동구","2320")
+        group2[3][4]=new Option("미추홀구","2330")
+        group2[3][5]=new Option("부평구","2360")
+        group2[3][6]=new Option("서구","2380")
+        group2[3][7]=new Option("연수구","2340")
+        group2[3][8]=new Option("옹진군","23320")
+        group2[3][9]=new Option("중구","2310")
+
+        <!-- 대전광역시 -->
+        group2[4][0]=new Option("대덕구","2550")
+        group2[4][1]=new Option("동구","2510")
+        group2[4][2]=new Option("서구","2530")
+        group2[4][3]=new Option("유성구","2540")
+        group2[4][4]=new Option("중구","2520")
+
+        <!-- 세종특별자치시 -->
+        group2[5][0]=new Option("가람동","2910")
+        group2[5][1]=new Option("고운동","2910")
+        group2[5][2]=new Option("금남면","2910")
+        group2[5][3]=new Option("나성동","2910")
+        group2[5][4]=new Option("다정동","2910")
+        group2[5][5]=new Option("대평동","2910")
+        group2[5][6]=new Option("도담동","2910")
+        group2[5][7]=new Option("반곡동","2910")
+        group2[5][8]=new Option("보람동","2910")
+        group2[5][9]=new Option("부강면","2910")
+        group2[5][10]=new Option("산울동","2910")
+        group2[5][11]=new Option("새롬동","2910")
+        group2[5][12]=new Option("소담동","2910")
+        group2[5][13]=new Option("소정면","2910")
+        group2[5][14]=new Option("아름동","2910")
+        group2[5][15]=new Option("어진동","2910")
+        group2[5][16]=new Option("연기면","2910")
+        group2[5][17]=new Option("연동면","2910")
+        group2[5][18]=new Option("연서면","2910")
+        group2[5][19]=new Option("장군면","2910")
+        group2[5][20]=new Option("전동면","2910")
+        group2[5][21]=new Option("전의면","2910")
+        group2[5][22]=new Option("조치원읍","2910")
+        group2[5][23]=new Option("종촌동","2910")
+        group2[5][24]=new Option("집현동","2910")
+        group2[5][25]=new Option("한솔동","2910")
+        group2[5][26]=new Option("합강동","2910")
+        group2[5][27]=new Option("해밀동","2910")
+
+        <!-- 광주광역시 -->
+        group2[6][0]=new Option("광산구","2450")
+        group2[6][1]=new Option("남구","2430")
+        group2[6][2]=new Option("동구","2410")
+        group2[6][3]=new Option("북구","2440")
+        group2[6][4]=new Option("서구","2420")
+
+        <!-- 울산광역시 -->
+        group2[7][0]=new Option("남구","2620")
+        group2[7][1]=new Option("동구","2630")
+        group2[7][2]=new Option("북구","2640")
+        group2[7][3]=new Option("울주군","26310")
+        group2[7][4]=new Option("중구","2610")
+
+        <!-- 경기도 -->
+        group2[8][0]=new Option("가평군","31370")
+        group2[8][1]=new Option("고양시","31100")
+        group2[8][2]=new Option("과천시","31110")
+        group2[8][3]=new Option("광명시","3160")
+        group2[8][4]=new Option("광주시","31250")
+        group2[8][5]=new Option("구리시","31120")
+        group2[8][6]=new Option("군포시","31160")
+        group2[8][7]=new Option("김포시","31230")
+        group2[8][8]=new Option("남양주시","31130")
+        group2[8][9]=new Option("동두천시","3180")
+        group2[8][10]=new Option("부천시","3150")
+        group2[8][11]=new Option("성남시","3120")
+        group2[8][12]=new Option("수원시","3110")
+        group2[8][13]=new Option("시흥시","31150")
+        group2[8][14]=new Option("안산시","3190")
+        group2[8][15]=new Option("안성시","31220")
+        group2[8][16]=new Option("안양시","3140")
+        group2[8][17]=new Option("양주시","31260")
+        group2[8][18]=new Option("양평군","31380")
+        group2[8][19]=new Option("여주시","31280")
+        group2[8][20]=new Option("연천군","31350")
+        group2[8][21]=new Option("오산시","31140")
+        group2[8][22]=new Option("용인시","31190")
+        group2[8][23]=new Option("의왕시","31170")
+        group2[8][24]=new Option("의정부시","3130")
+        group2[8][25]=new Option("이천시","31210")
+        group2[8][26]=new Option("파주시","31200")
+        group2[8][27]=new Option("평택시","3170")
+        group2[8][28]=new Option("포천시","31270")
+        group2[8][29]=new Option("하남시","31180")
+        group2[8][30]=new Option("화성시","31240")
+
+        <!-- 강원도 -->
+        group2[9][0]=new Option("강릉시","3230")
+        group2[9][1]=new Option("고성군","32400")
+        group2[9][2]=new Option("동해시","3240")
+        group2[9][3]=new Option("삼척시","3270")
+        group2[9][4]=new Option("속초시","3260")
+        group2[9][5]=new Option("양구군","32380")
+        group2[9][6]=new Option("양야군","32410")
+        group2[9][7]=new Option("영월군","32330")
+        group2[9][8]=new Option("원주시","3220")
+        group2[9][9]=new Option("인제군","32390")
+        group2[9][10]=new Option("정선군","32350")
+        group2[9][11]=new Option("철원군","32360")
+        group2[9][12]=new Option("춘천시","3210")
+        group2[9][13]=new Option("태백시","3250")
+        group2[9][14]=new Option("평창군","32340")
+        group2[9][15]=new Option("홍천군","32310")
+        group2[9][16]=new Option("화천군","32370")
+        group2[9][17]=new Option("횡성군","32320")
+
+        <!-- 충청북도 -->
+        group2[10][0]=new Option("괴산군","33360")
+        group2[10][1]=new Option("단양군","33380")
+        group2[10][2]=new Option("보은군","33320")
+        group2[10][3]=new Option("영동군","33340")
+        group2[10][4]=new Option("옥천군","33330")
+        group2[10][5]=new Option("음성군","33370")
+        group2[10][6]=new Option("제천시","3330")
+        group2[10][7]=new Option("증평군","33390")
+        group2[10][8]=new Option("진천군","33350")
+        group2[10][9]=new Option("청주시","3340")
+        group2[10][10]=new Option("충주시","3320")
+
+        <!-- 충청남도 -->
+        group2[11][0]=new Option("계룡시","3470")
+        group2[11][1]=new Option("공주시","3420")
+        group2[11][2]=new Option("금산군","34310")
+        group2[11][3]=new Option("논산시","3460")
+        group2[11][4]=new Option("당진시","3480")
+        group2[11][5]=new Option("보령시","3430")
+        group2[11][6]=new Option("부여군","34330")
+        group2[11][7]=new Option("서산시","3450")
+        group2[11][8]=new Option("서천군","34340")
+        group2[11][9]=new Option("아산시","3440")
+        group2[11][10]=new Option("예산군","34370")
+        group2[11][11]=new Option("천안시","3410")
+        group2[11][12]=new Option("청양군","34350")
+        group2[11][13]=new Option("태안군","34380")
+        group2[11][14]=new Option("홍성군","34360")
+
+        <!-- 경상북도 -->
+        group2[12][0]=new Option("경산시","37100")
+        group2[12][1]=new Option("경주시","3720")
+        group2[12][2]=new Option("고령군","37370")
+        group2[12][3]=new Option("구미시","3750")
+        group2[12][4]=new Option("군위군","37310")
+        group2[12][5]=new Option("김천시","3730")
+        group2[12][6]=new Option("문경시","3790")
+        group2[12][7]=new Option("봉화군","37410")
+        group2[12][8]=new Option("상주시","3780")
+        group2[12][9]=new Option("성주군","37380")
+        group2[12][10]=new Option("안동시","3740")
+        group2[12][11]=new Option("영덕군","37350")
+        group2[12][12]=new Option("영양군","37340")
+        group2[12][13]=new Option("영주시","3760")
+        group2[12][14]=new Option("영천시","3770")
+        group2[12][15]=new Option("예천군","37400")
+        group2[12][16]=new Option("울릉군","37430")
+        group2[12][17]=new Option("울진군","37420")
+        group2[12][18]=new Option("의성군","37320")
+        group2[12][19]=new Option("청도군","37360")
+        group2[12][20]=new Option("청송군","37330")
+        group2[12][21]=new Option("칠곡군","37390")
+        group2[12][22]=new Option("포항시","3710")
+
+        <!-- 경상남도 -->
+        group2[13][0]=new Option("거제시","3890")
+        group2[13][1]=new Option("거창군","38390")
+        group2[13][2]=new Option("고성군","38340")
+        group2[13][3]=new Option("김해시","3870")
+        group2[13][4]=new Option("남해군","38350")
+        group2[13][5]=new Option("밀양시","3880")
+        group2[13][6]=new Option("사천시","3860")
+        group2[13][7]=new Option("산청군","38370")
+        group2[13][8]=new Option("양산시","38100")
+        group2[13][9]=new Option("의령군","38310")
+        group2[13][10]=new Option("진주시","3830")
+        group2[13][11]=new Option("창녕군","38330")
+        group2[13][12]=new Option("창원시","38110")
+        group2[13][13]=new Option("통영시","3850")
+        group2[13][14]=new Option("하동군","38360")
+        group2[13][15]=new Option("함안군","38320")
+        group2[13][16]=new Option("함양군","38380")
+        group2[13][17]=new Option("합천군","38400")
+
+        <!-- 전라북도 -->
+        group2[14][0]=new Option("고창군","35370")
+        group2[14][1]=new Option("군산시","3520")
+        group2[14][2]=new Option("김제시","3560")
+        group2[14][3]=new Option("남원시","3550")
+        group2[14][4]=new Option("무주군","35330")
+        group2[14][5]=new Option("부안군","35380")
+        group2[14][6]=new Option("순창군","35360")
+        group2[14][7]=new Option("완주군","35310")
+        group2[14][8]=new Option("익산시","3530")
+        group2[14][9]=new Option("임실군","35350")
+        group2[14][10]=new Option("장수군","35340")
+        group2[14][11]=new Option("전주시","3510")
+        group2[14][12]=new Option("정읍시","3540")
+        group2[14][13]=new Option("진안군","35320")
+
+        <!-- 전라남도 -->
+        group2[15][0]=new Option("강진군","36390")
+        group2[15][1]=new Option("고흥군","36350")
+        group2[15][2]=new Option("곡성군","36320")
+        group2[15][3]=new Option("광양시","3660")
+        group2[15][4]=new Option("구례군","36330")
+        group2[15][5]=new Option("나주시","3640")
+        group2[15][6]=new Option("담양군","36310")
+        group2[15][7]=new Option("목포시","3610")
+        group2[15][8]=new Option("무안군","36420")
+        group2[15][9]=new Option("보성군","36360")
+        group2[15][10]=new Option("순천시","3630")
+        group2[15][11]=new Option("신안군","36480")
+        group2[15][12]=new Option("여수시","3620")
+        group2[15][13]=new Option("영광군","36440")
+        group2[15][14]=new Option("영암군","36410")
+        group2[15][15]=new Option("완도군","36460")
+        group2[15][16]=new Option("장성군","36450")
+        group2[15][17]=new Option("장흥군","36380")
+        group2[15][18]=new Option("진도군","36470")
+        group2[15][19]=new Option("함평군","36430")
+        group2[15][20]=new Option("해남군","36400")
+        group2[15][21]=new Option("화순군","36370")
+
+        <!-- 제주특별자치도 -->
+        group2[16][0]=new Option("서귀포시","3920")
+        group2[16][1]=new Option("제주시","3910")
+
+
+        var temp2=document.myForm.sigungu2
+        function redirect2(x){
+        for (m=temp2.options.length-1;m>0;m--)
+        temp2.options[m]=null
+        for (i=0;i<group2[x].length;i++){
+        temp2.options[i]=new Option(group2[x][i].text,group2[x][i].value)
+        }
+        temp2.options[0].selected=true
+        }
+        function go2(){
+        location=temp2.options[temp2.selectedIndex].value
+        }
+        <!--=========================================== 두번째 드롭다운 끝 ===========================================-->
+
+
+        <!--=========================================== 세번째 드롭다운 시작 ===========================================-->
+        var groups3=document.myForm.sido3.options.length
+        var group3=new Array(groups3)
+        for (i=0; i<groups3; i++)
+        group3[i]=new Array()
+
+        <!---------- 아래와 같은 방법으로 각 항목을 설정 합니다 ---------------->
+
+        <!-- 서울특별시 -->
+        group3[0][0]=new Option("강남구","11230")
+        group3[0][1]=new Option("강동구","11250")
+        group3[0][2]=new Option("강북구","1190")
+        group3[0][3]=new Option("강서구","11160")
+        group3[0][4]=new Option("관악구","11210")
+        group3[0][5]=new Option("광진구","1150")
+        group3[0][6]=new Option("구로구","11170")
+        group3[0][7]=new Option("금천구","11180")
+        group3[0][8]=new Option("노원구","11110")
+        group3[0][9]=new Option("도봉구","11100")
+        group3[0][10]=new Option("동대문구","1160")
+        group3[0][11]=new Option("동작구","11200")
+        group3[0][12]=new Option("마포구","11140")
+        group3[0][13]=new Option("서대문구","11130")
+        group3[0][14]=new Option("서초구","11220")
+        group3[0][15]=new Option("성동구","1140")
+        group3[0][16]=new Option("성북구","1180")
+        group3[0][17]=new Option("송파구","11240")
+        group3[0][18]=new Option("양천구","11150")
+        group3[0][19]=new Option("영등포구","11190")
+        group3[0][20]=new Option("용산구","1130")
+        group3[0][21]=new Option("은평구","11120")
+        group3[0][22]=new Option("종로구","1110")
+        group3[0][23]=new Option("중구","1120")
+        group3[0][24]=new Option("중랑구","1170")
+
+
+        <!-- 부산광역시 -->
+        group3[1][0]=new Option("강서구","21120")
+        group3[1][1]=new Option("금정구","21110")
+        group3[1][2]=new Option("기장군","21310")
+        group3[1][3]=new Option("남구","2170")
+        group3[1][4]=new Option("동구","2130")
+        group3[1][5]=new Option("동래구","2160")
+        group3[1][6]=new Option("부산진구","2150")
+        group3[1][7]=new Option("북구","2180")
+        group3[1][8]=new Option("사상구","21150")
+        group3[1][9]=new Option("사하구","21100")
+        group3[1][10]=new Option("서구","2120")
+        group3[1][11]=new Option("수영구","21140")
+        group3[1][12]=new Option("연제구","21130")
+        group3[1][13]=new Option("영도구","2140")
+        group3[1][14]=new Option("중구","2110")
+        group3[1][15]=new Option("해운대구","2190")
+
+        <!-- 대구광역시 -->
+        group3[2][0]=new Option("남구","2240")
+        group3[2][1]=new Option("달서구","2270")
+        group3[2][2]=new Option("달성군","22310")
+        group3[2][3]=new Option("동구","2220")
+        group3[2][4]=new Option("북구","2250")
+        group3[2][5]=new Option("서구","2230")
+        group3[2][6]=new Option("수성구","2260")
+        group3[2][7]=new Option("중구","2210")
+
+        <!-- 인천광역시 -->
+        group3[3][0]=new Option("강화군","23310")
+        group3[3][1]=new Option("계양구","2370")
+        group3[3][2]=new Option("남동구","2350")
+        group3[3][3]=new Option("동구","2320")
+        group3[3][4]=new Option("미추홀구","2330")
+        group3[3][5]=new Option("부평구","2360")
+        group3[3][6]=new Option("서구","2380")
+        group3[3][7]=new Option("연수구","2340")
+        group3[3][8]=new Option("옹진군","23320")
+        group3[3][9]=new Option("중구","2310")
+
+        <!-- 대전광역시 -->
+        group3[4][0]=new Option("대덕구","2550")
+        group3[4][1]=new Option("동구","2510")
+        group3[4][2]=new Option("서구","2530")
+        group3[4][3]=new Option("유성구","2540")
+        group3[4][4]=new Option("중구","2520")
+
+        <!-- 세종특별자치시 -->
+        group3[5][0]=new Option("가람동","2910")
+        group3[5][1]=new Option("고운동","2910")
+        group3[5][2]=new Option("금남면","2910")
+        group3[5][3]=new Option("나성동","2910")
+        group3[5][4]=new Option("다정동","2910")
+        group3[5][5]=new Option("대평동","2910")
+        group3[5][6]=new Option("도담동","2910")
+        group3[5][7]=new Option("반곡동","2910")
+        group3[5][8]=new Option("보람동","2910")
+        group3[5][9]=new Option("부강면","2910")
+        group3[5][10]=new Option("산울동","2910")
+        group3[5][11]=new Option("새롬동","2910")
+        group3[5][12]=new Option("소담동","2910")
+        group3[5][13]=new Option("소정면","2910")
+        group3[5][14]=new Option("아름동","2910")
+        group3[5][15]=new Option("어진동","2910")
+        group3[5][16]=new Option("연기면","2910")
+        group3[5][17]=new Option("연동면","2910")
+        group3[5][18]=new Option("연서면","2910")
+        group3[5][19]=new Option("장군면","2910")
+        group3[5][20]=new Option("전동면","2910")
+        group3[5][21]=new Option("전의면","2910")
+        group3[5][22]=new Option("조치원읍","2910")
+        group3[5][23]=new Option("종촌동","2910")
+        group3[5][24]=new Option("집현동","2910")
+        group3[5][25]=new Option("한솔동","2910")
+        group3[5][26]=new Option("합강동","2910")
+        group3[5][27]=new Option("해밀동","2910")
+
+        <!-- 광주광역시 -->
+        group3[6][0]=new Option("광산구","2450")
+        group3[6][1]=new Option("남구","2430")
+        group3[6][2]=new Option("동구","2410")
+        group3[6][3]=new Option("북구","2440")
+        group3[6][4]=new Option("서구","2420")
+
+        <!-- 울산광역시 -->
+        group3[7][0]=new Option("남구","2620")
+        group3[7][1]=new Option("동구","2630")
+        group3[7][2]=new Option("북구","2640")
+        group3[7][3]=new Option("울주군","26310")
+        group3[7][4]=new Option("중구","2610")
+
+        <!-- 경기도 -->
+        group3[8][0]=new Option("가평군","31370")
+        group3[8][1]=new Option("고양시","31100")
+        group3[8][2]=new Option("과천시","31110")
+        group3[8][3]=new Option("광명시","3160")
+        group3[8][4]=new Option("광주시","31250")
+        group3[8][5]=new Option("구리시","31120")
+        group3[8][6]=new Option("군포시","31160")
+        group3[8][7]=new Option("김포시","31230")
+        group3[8][8]=new Option("남양주시","31130")
+        group3[8][9]=new Option("동두천시","3180")
+        group3[8][10]=new Option("부천시","3150")
+        group3[8][11]=new Option("성남시","3120")
+        group3[8][12]=new Option("수원시","3110")
+        group3[8][13]=new Option("시흥시","31150")
+        group3[8][14]=new Option("안산시","3190")
+        group3[8][15]=new Option("안성시","31220")
+        group3[8][16]=new Option("안양시","3140")
+        group3[8][17]=new Option("양주시","31260")
+        group3[8][18]=new Option("양평군","31380")
+        group3[8][19]=new Option("여주시","31280")
+        group3[8][20]=new Option("연천군","31350")
+        group3[8][21]=new Option("오산시","31140")
+        group3[8][22]=new Option("용인시","31190")
+        group3[8][23]=new Option("의왕시","31170")
+        group3[8][24]=new Option("의정부시","3130")
+        group3[8][25]=new Option("이천시","31210")
+        group3[8][26]=new Option("파주시","31200")
+        group3[8][27]=new Option("평택시","3170")
+        group3[8][28]=new Option("포천시","31270")
+        group3[8][29]=new Option("하남시","31180")
+        group3[8][30]=new Option("화성시","31240")
+
+        <!-- 강원도 -->
+        group3[9][0]=new Option("강릉시","3230")
+        group3[9][1]=new Option("고성군","32400")
+        group3[9][2]=new Option("동해시","3240")
+        group3[9][3]=new Option("삼척시","3270")
+        group3[9][4]=new Option("속초시","3260")
+        group3[9][5]=new Option("양구군","32380")
+        group3[9][6]=new Option("양야군","32410")
+        group3[9][7]=new Option("영월군","32330")
+        group3[9][8]=new Option("원주시","3220")
+        group3[9][9]=new Option("인제군","32390")
+        group3[9][10]=new Option("정선군","32350")
+        group3[9][11]=new Option("철원군","32360")
+        group3[9][12]=new Option("춘천시","3210")
+        group3[9][13]=new Option("태백시","3250")
+        group3[9][14]=new Option("평창군","32340")
+        group3[9][15]=new Option("홍천군","32310")
+        group3[9][16]=new Option("화천군","32370")
+        group3[9][17]=new Option("횡성군","32320")
+
+        <!-- 충청북도 -->
+        group3[10][0]=new Option("괴산군","33360")
+        group3[10][1]=new Option("단양군","33380")
+        group3[10][2]=new Option("보은군","33320")
+        group3[10][3]=new Option("영동군","33340")
+        group3[10][4]=new Option("옥천군","33330")
+        group3[10][5]=new Option("음성군","33370")
+        group3[10][6]=new Option("제천시","3330")
+        group3[10][7]=new Option("증평군","33390")
+        group3[10][8]=new Option("진천군","33350")
+        group3[10][9]=new Option("청주시","3340")
+        group3[10][10]=new Option("충주시","3320")
+
+        <!-- 충청남도 -->
+        group3[11][0]=new Option("계룡시","3470")
+        group3[11][1]=new Option("공주시","3420")
+        group3[11][2]=new Option("금산군","34310")
+        group3[11][3]=new Option("논산시","3460")
+        group3[11][4]=new Option("당진시","3480")
+        group3[11][5]=new Option("보령시","3430")
+        group3[11][6]=new Option("부여군","34330")
+        group3[11][7]=new Option("서산시","3450")
+        group3[11][8]=new Option("서천군","34340")
+        group3[11][9]=new Option("아산시","3440")
+        group3[11][10]=new Option("예산군","34370")
+        group3[11][11]=new Option("천안시","3410")
+        group3[11][12]=new Option("청양군","34350")
+        group3[11][13]=new Option("태안군","34380")
+        group3[11][14]=new Option("홍성군","34360")
+
+        <!-- 경상북도 -->
+        group3[12][0]=new Option("경산시","37100")
+        group3[12][1]=new Option("경주시","3720")
+        group3[12][2]=new Option("고령군","37370")
+        group3[12][3]=new Option("구미시","3750")
+        group3[12][4]=new Option("군위군","37310")
+        group3[12][5]=new Option("김천시","3730")
+        group3[12][6]=new Option("문경시","3790")
+        group3[12][7]=new Option("봉화군","37410")
+        group3[12][8]=new Option("상주시","3780")
+        group3[12][9]=new Option("성주군","37380")
+        group3[12][10]=new Option("안동시","3740")
+        group3[12][11]=new Option("영덕군","37350")
+        group3[12][12]=new Option("영양군","37340")
+        group3[12][13]=new Option("영주시","3760")
+        group3[12][14]=new Option("영천시","3770")
+        group3[12][15]=new Option("예천군","37400")
+        group3[12][16]=new Option("울릉군","37430")
+        group3[12][17]=new Option("울진군","37420")
+        group3[12][18]=new Option("의성군","37320")
+        group3[12][19]=new Option("청도군","37360")
+        group3[12][20]=new Option("청송군","37330")
+        group3[12][21]=new Option("칠곡군","37390")
+        group3[12][22]=new Option("포항시","3710")
+
+        <!-- 경상남도 -->
+        group3[13][0]=new Option("거제시","3890")
+        group3[13][1]=new Option("거창군","38390")
+        group3[13][2]=new Option("고성군","38340")
+        group3[13][3]=new Option("김해시","3870")
+        group3[13][4]=new Option("남해군","38350")
+        group3[13][5]=new Option("밀양시","3880")
+        group3[13][6]=new Option("사천시","3860")
+        group3[13][7]=new Option("산청군","38370")
+        group3[13][8]=new Option("양산시","38100")
+        group3[13][9]=new Option("의령군","38310")
+        group3[13][10]=new Option("진주시","3830")
+        group3[13][11]=new Option("창녕군","38330")
+        group3[13][12]=new Option("창원시","38110")
+        group3[13][13]=new Option("통영시","3850")
+        group3[13][14]=new Option("하동군","38360")
+        group3[13][15]=new Option("함안군","38320")
+        group3[13][16]=new Option("함양군","38380")
+        group3[13][17]=new Option("합천군","38400")
+
+        <!-- 전라북도 -->
+        group3[14][0]=new Option("고창군","35370")
+        group3[14][1]=new Option("군산시","3520")
+        group3[14][2]=new Option("김제시","3560")
+        group3[14][3]=new Option("남원시","3550")
+        group3[14][4]=new Option("무주군","35330")
+        group3[14][5]=new Option("부안군","35380")
+        group3[14][6]=new Option("순창군","35360")
+        group3[14][7]=new Option("완주군","35310")
+        group3[14][8]=new Option("익산시","3530")
+        group3[14][9]=new Option("임실군","35350")
+        group3[14][10]=new Option("장수군","35340")
+        group3[14][11]=new Option("전주시","3510")
+        group3[14][12]=new Option("정읍시","3540")
+        group3[14][13]=new Option("진안군","35320")
+
+        <!-- 전라남도 -->
+        group3[15][0]=new Option("강진군","36390")
+        group3[15][1]=new Option("고흥군","36350")
+        group3[15][2]=new Option("곡성군","36320")
+        group3[15][3]=new Option("광양시","3660")
+        group3[15][4]=new Option("구례군","36330")
+        group3[15][5]=new Option("나주시","3640")
+        group3[15][6]=new Option("담양군","36310")
+        group3[15][7]=new Option("목포시","3610")
+        group3[15][8]=new Option("무안군","36420")
+        group3[15][9]=new Option("보성군","36360")
+        group3[15][10]=new Option("순천시","3630")
+        group3[15][11]=new Option("신안군","36480")
+        group3[15][12]=new Option("여수시","3620")
+        group3[15][13]=new Option("영광군","36440")
+        group3[15][14]=new Option("영암군","36410")
+        group3[15][15]=new Option("완도군","36460")
+        group3[15][16]=new Option("장성군","36450")
+        group3[15][17]=new Option("장흥군","36380")
+        group3[15][18]=new Option("진도군","36470")
+        group3[15][19]=new Option("함평군","36430")
+        group3[15][20]=new Option("해남군","36400")
+        group3[15][21]=new Option("화순군","36370")
+
+        <!-- 제주특별자치도 -->
+        group3[16][0]=new Option("서귀포시","3920")
+        group3[16][1]=new Option("제주시","3910")
+
+
+        var temp3=document.myForm.sigungu3
+        function redirect3(x){
+        for (m=temp3.options.length-1;m>0;m--)
+        temp3.options[m]=null
+        for (i=0;i<group3[x].length;i++){
+        temp3.options[i]=new Option(group3[x][i].text,group3[x][i].value)
+        }
+        temp3.options[0].selected=true
+        }
+        function go3(){
+        location=temp3.options[temp3.selectedIndex].value
+        }
+        <!--=========================================== 세번째 드롭다운 끝 ===========================================-->
+
+</script>
+
+
+{% endblock %}

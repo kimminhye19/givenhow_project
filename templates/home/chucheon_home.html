@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <title>기분(Given)어때?</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>GoSlideshow HTML5 Canvas</title>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">기분(Given)어때? </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+              <a class="nav-link active" href="/">Home
+                  <span class="visually-hidden">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+          </li> -->
+          <li class="nav-item">
+              <a class="nav-link" href="/board/list">Community</a>
+          </li>
+<!--          <li class="nav-item dropdown">-->
+<!--              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="mypage">My page</a>-->
+<!--              <div class="dropdown-menu"  aria-labelledby="mypage">-->
+<!--                  <a class="dropdown-item" href="#"> ㅇ </a>-->
+<!--                  <a class="dropdown-item" href="#"> Q&A </a>-->
+<!--                  <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                  <div class="dropdown-divider"></div>-->
+<!--                  <a class="dropdown-item" href="#">Separated link</a>-->
+<!--              </div>-->
+<!--          </li>-->
+      </ul>
+        {% if users == ''%}
+              <form method="GET" action="/accounts/existing_login/" style="margin: 0px 10px 0px 0px;">
+                  <button class="btn btn-danger" type="login">로그인</button>
+              </form>
+              <form method="GET" action="/accounts/signup/" style="margin: 0px 10px 0px 0px;">
+                  <button class="btn btn-danger" type="submit">회원가입</button>
+              </form>
+        {% else %}
+              <form action="/accounts/logout/" method="GET" style="margin: 0px 10px 0px 0px;">
+                <button type="submit" class="btn btn-danger">로그아웃</button>
+              </form>
+        {% endif %}
+    </div>
+  </div>
+</nav>
+
+<script type="text/javascript">
+
+ var imagePaths = ["static/img/Magnolia.jpg", "static/img/Lifeistrip_daejeon.jpg", "static/img/Cafe_breezin_seoul.jpg", "static/img/Gwangjang_seoul.jpg", "static/img/Bukchon_seoul.jpg"];
+ var showCanvas = null;
+ var showCanvasCtx = null;
+ var img = document.createElement("img");
+ var currentImage = 0;
+ var revealTimer;
+
+ window.onload = function () {
+    showCanvas = document.getElementById('GoSlideShow');
+    showCanvasCtx = showCanvas.getContext('2d');
+    img.setAttribute('width','720');
+    img.setAttribute('height','470');
+    switchImage();
+    setInterval(switchImage,3000);
+    }
+
+ function switchImage() {
+    img.setAttribute('src',imagePaths[currentImage++]);
+
+    if (currentImage >= imagePaths.length) {
+        currentImage = 0;
+        }
+    showCanvasCtx.globalAlpha = 0.1;
+    revealTimer = setInterval(revealImage,100);
+ }
+
+  function revealImage() {
+    showCanvasCtx.save();
+    showCanvasCtx.drawImage(img,0,0,720,470);
+    showCanvasCtx.globalAlpha += 0.1;
+
+    if (showCanvasCtx.globalAlpha >= 1.0) {
+        clearInterval(revealTimer);
+        }
+    showCanvasCtx.restore();
+ }
+</script>
+    <style>
+      .a {
+        background-color: #FFE6CE;
+        //margin:0% 1% 0% 1%;
+      }
+      .b {
+        background-color: #000000;
+        opacity: 0.3;
+        padding: 0px 0px 0px 0px;
+        width: 720px;
+        height: 470px;
+      }
+      .c {
+        padding: 90px 0px 0px 0px;
+        width: 720px;
+        height: 470px;
+      }
+      div { text-align: center; }
+
+      .d {
+        text-align: center;
+        width: 30%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 17px;
+        }
+
+      .d_head {
+        background: #ff7851;
+        text-align: center;
+        color: white;
+        width: 10%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 17px;
+        }
+
+      .d_click {
+        text-align: center;
+        background: #ffce67;
+        width: 30%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 17px;
+        }
+
+      .d:hover {
+        background: #ffce67; // #ff7851; //
+        }
+
+      .like_font {
+        color: #ff7851;
+        text-decoration: none;
+        }
+      .like_font:hover {
+        color: white;
+        //color: #ff7851;
+        }        
+        
+      .title_font {
+        color: #343a40;
+        text-decoration: none;
+        }
+      .title_font:hover {
+        color: #ff7851;
+        //color: #ff7851;
+        }
+
+    </style>
+</head>
+<body>
+
+<form align="center" class="a" >
+    <div class="mt-4" style="position: relative;">
+        <canvas class="mt-4" id='GoSlideShow' width="720" height="455">Gvien 대문</canvas>
+        <div style="position:absolute; left: 50%; top: 50%; transform : translate(-50%, -50%);" class="b mt-1">
+            <img src="/static/img/Given_1.png" width="720" height="470">
+        </div>
+        <div style="position:absolute; left: 50%; top: 50%; transform : translate(-50%, -50%);" class="c mt-1">
+            <img src="/static/img/Given_1_1.png" width="630" >
+        </div>
+    </div>
+</form>
+<div class="row mt-5" style= "border: 1px solid #ff7851; margin:0% 5% 0% 5%;">
+    <div class="d_head" style="display: inline-block; width: 10%;">
+        <strong> Test 결과</strong>
+    </div>
+    <div class="d" style="display: inline-block;">
+        <a class="like_font" href="/chucheon/like1"> <strong>　'{{ sido_sigungu_1_pr }} {{ sido_sigungu_1_nm }}'　</strong></a>
+        <span class="badge bg-secondary" style="transform: translateY(-10%);">click !</span>
+    </div>
+    <div class="d" style="display: inline-block;">
+        <a class="like_font" href="/chucheon/like2"> <strong>　'{{ sido_sigungu_2_pr }} {{ sido_sigungu_2_nm }}'　</strong></a>
+        <span class="badge bg-primary" style="transform: translateY(-10%);">click !</span>
+    </div>
+
+    <div class="d" style="display: inline-block;">
+        <a class="like_font" href="/chucheon/like3"> <strong>　'{{ sido_sigungu_3_pr }} {{ sido_sigungu_3_nm }}'　</strong></a>
+        <span class="badge bg-danger" style="transform: translateY(-10%);">click !</span>
+    </div>
+</div>
+<div class="row mt-5" style="margin:0% 5% 0% 5%; ">
+    <table class="table table-hover ">
+        <tr class="table-danger">
+            <th colspan="6">　국내 여행지 Top3 <span class="badge bg-warning" style="color: #f00000;">Hit</span> </th>
+        </tr>
+        <tr>
+            {% for TripLocal1 in general_chucheon %}
+            <td height="160px" style="padding: 12px;" >
+                {% if TripLocal1.image_src == '' %}
+                    <a><img class="image" src="static/img/Magnolia.jpg" width="180px" height="135px"/></a></td>
+                {% else %}
+                    <a><img class="image" src="{{TripLocal1.image_src}}" width="180px" height="135px"  data-toggle="modal" data-target="#exampleModal{{TripLocal1.id}}"/></a>
+                {% endif %}
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{TripLocal1.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{TripLocal1.id}}" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel{{TripLocal1.id}}"><strong>　 {{TripLocal1.name}}</strong></h5>
+                      </div>
+                      <div class="modal-body">
+                          {% if TripLocal1.image_src == "" %}
+                            <img class="image" src="static/img/Magnolia.jpg" width="400px" height="350px"/>
+                          {% else %}
+                            <img class="image" src="{{TripLocal1.image_src}}" width="400px" height="350px"/>
+                          {% endif %}
+                          <p><h6>주소: {% for a in pr_rg_name1 %}{{a.code_nm}}{% endfor %} {{TripLocal1.com_code_rg_id__code_nm}} {{TripLocal1.add_detail}}</h6></p>
+                          <p><h6>여행 테마: {% for a in pr_tm_name1 %}{{a.code_nm}}{% endfor %}  > {{TripLocal1.com_code_tm_id__code_nm}} </h6></p>
+                          {% if TripLocal1.tel == '' %}
+                          {% else %}
+                            <p><h6>전화번호: {{TripLocal1.tel}}</h6></p>
+                          {% endif %}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--모달끝-->
+            </td>
+            <td width="20%" align="center" style="padding:12px 6px 0px 6px;"><h6><strong><a class="title_font" data-toggle="modal" data-target="#exampleModal{{TripLocal1.id}}"> {{TripLocal1.name}}</a></strong></h6>
+                <div class="mt-4">
+                    <p class="lead"><h6>{% for a in pr_rg_name1 %}{{a.code_nm}}{% endfor %} {{TripLocal1.com_code_rg_id__code_nm}}</h6></p>
+                    <p class="lead"><h6>{{TripLocal1.com_code_tm_id__code_nm}}</h6></p>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <table class="table table-hover mt-2">
+        <tr class="table-danger">
+            <th colspan="6">　인기 여행지역: {% for a in pr_rg_name2 %}{{a.code_nm}}{% endfor %} {% for b in rg_name2 %}{{b}}{% endfor %} <span class="badge bg-warning" style="color: #f00000;">Hit</span></th>
+        </tr>
+        <tr>
+            {% for TripLocal2 in general_chucheon_ran_rg %}
+                <td height="160px" style="padding: 12px;">
+                {% if TripLocal2.image_src == '' %}
+                    <a><img class="image" src="static/img/Magnolia.jpg" width="180px" height="135px"/></a></td>
+                {% else %}
+                    <a><img class="image" src="{{TripLocal2.image_src}}" width="180px" height="135px"  data-toggle="modal" data-target="#exampleModal{{TripLocal2.id}}"/></a>
+                {% endif %}
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{TripLocal2.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{TripLocal2.id}}" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel{{TripLocal2.id}}"><strong>　 {{TripLocal2.name}}</strong></h5>
+                          </div>
+                          <div class="modal-body">
+                              {% if TripLocal2.image_src == "" %}
+                                <img class="image" src="static/img/Magnolia.jpg" width="400px" height="350px"/>
+                              {% else %}
+                                <img class="image" src="{{TripLocal2.image_src}}" width="400px" height="350px"/>
+                              {% endif %}
+                          <p><h6>주소: {% for a in pr_rg_name2 %}{{a.code_nm}}{% endfor %} {{TripLocal2.com_code_rg_id__code_nm}} {{TripLocal2.add_detail}}</h6></p>
+                          <p><h6>여행 테마: {% for a in pr_tm_name2 %}{{a.code_nm}}{% endfor %}  > {{TripLocal2.com_code_tm_id__code_nm}} </h6></p>
+                              {% if TripLocal2.tel == '' %}
+                              {% else %}
+                                <p><h6>전화번호: {{TripLocal2.tel}}</h6></p>
+                              {% endif %}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--모달끝-->
+                </td>
+            <td width="20%" align="center" style="padding:12px 6px 0px 6px;"><h6><strong><a class="title_font" data-toggle="modal" data-target="#exampleModal{{TripLocal2.id}}">{{TripLocal2.name}}</a></strong></h6>
+                <div class="mt-4">
+                    <p class="lead"><h6>{% for a in pr_rg_name2 %}{{a.code_nm}}{% endfor %} {{TripLocal2.com_code_rg_id__code_nm}}</h6></p>
+                    <p class="lead"><h6>{{TripLocal2.com_code_tm_id__code_nm}}</h6></p>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <table class="table table-hover mt-2">
+        <tr class="table-danger">
+            <th colspan="6">　테마별 여행: {% for a in pr_tm_name3 %}{{a.code_nm}}{% endfor %} <span class="badge bg-warning" style="color: #f00000;">Hit</span>  </th>
+        <tr>
+            {% for TripLocal3 in general_chucheon_ran_tm %}
+            <td height="160px" style="padding: 12px;">
+                {% if TripLocal3.image_src == '' %}
+                    <a><img class="image" src="static/img/Magnolia.jpg" width="180px" height="135px"/></a></td>
+                {% else %}
+                    <a><img class="image" src="{{TripLocal3.image_src}}" width="180px" height="135px"  data-toggle="modal" data-target="#exampleModal{{TripLocal3.id}}"/></a>
+                {% endif %}
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{TripLocal3.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{TripLocal3.id}}" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel{{TripLocal3.id}}"><strong>　 {{TripLocal3.name}}</strong></h5>
+                      </div>
+                      <div class="modal-body">
+                          {% if TripLocal3.image_src == "" %}
+                            <img class="image" src="static/img/Magnolia.jpg" width="400px" height="350px"/>
+                          {% else %}
+                            <img class="image" src="{{TripLocal3.image_src}}" width="400px" height="350px"/>
+                          {% endif %}
+                          <p><h6>주소: {% for a in pr_rg_name3 %}{{a.code_nm}}{% endfor %}{{TripLocal3.com_code_rg_id__code_nm}} {{TripLocal3.add_detail}}</h6></p>
+                          <p><h6>여행 테마: {% for a in pr_tm_name3 %}{{a.code_nm}}{% endfor %}  > {{TripLocal3.com_code_tm_id__code_nm}} </h6></p>
+                          {% if TripLocal3.tel == '' %}
+                          {% else %}
+                          <p><h6>전화번호: {{TripLocal3.tel}}</h6></p>
+                          {% endif %}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--모달끝-->
+            </td>
+        <td width="20%" align="center" style="padding:12px 6px 0px 6px;"><h6><strong><a class="title_font" data-toggle="modal" data-target="#exampleModal{{TripLocal3.id}}">{{TripLocal3.name}}</a></strong></h6>
+                <div class="mt-4">
+                    <p class="lead"><h6>{% for a in pr_rg_name3 %}{{a.code_nm}}{% endfor %} {{TripLocal3.com_code_rg_id__code_nm}}</h6></p>
+                    <p class="lead"><h6>{{TripLocal3.com_code_tm_id__code_nm}}</h6></p>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+{% endblock %}

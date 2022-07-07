@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">기분(Given)어때? </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/board/list">Community</a>
+        </li>
+<!-- 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li> -->
+      </ul>
+<!--      <form method="GET" action="/accounts/login/" style="margin: 0px 10px 0px 0px;">-->
+<!--        <button class="btn btn-danger" type="login">로그인</button>-->
+<!--      </form>-->
+<!--      <form method="GET" action="/accounts/signup/" style="margin: 0px 10px 0px 0px;">-->
+<!--        <button class="btn btn-danger" type="submit">회원가입</button>-->
+<!--      </form>-->
+    </div>
+  </div>
+</nav>
+</head>
+<body>
+<div class="container" align="center">
+<!--    <div class="row mt-5">-->
+    <div class="text-center" style="padding: 10% 0px 0px 0px;">
+            <h1>회원가입</h1>
+    </div>
+<!--    </div>-->
+</div>
+<div class="container" align="center">
+    <div class="row mt-5">
+<!--        <div class="col-12 text-center">-->
+          <form method="POST" action=".">
+              {% csrf_token %}
+              <div class="form-group">
+              <label for="userid">아이디</label>
+              <input style="width:400"
+                type="text"
+                class="form-control row mt-2"
+                id="userid"
+                placeholder="아이디를 입력하세요"
+                name="userid"
+              />
+              </div>
+              <div class="form-group">
+              <label for="userpwd">비밀번호</label>
+              <input style="width:400"
+                type="password"
+                class="form-control row mt-2"
+                id="userpwd"
+                placeholder="비밀번호를 입력하세요"
+                name="password"
+              />
+              </div>
+              <div class="form-group">
+              <label for="re_password">비밀번호 확인</label>
+              <input style="width:400"
+                type="password"
+                class="form-control row mt-2"
+                id="re_password"
+                placeholder="비밀번호를 다시 입력하세요"
+                name="re_password"
+              />
+              </div>
+              <div class="row mt-3">
+                <div class="col-12 text-center" style="color: red;">
+                {{error}}
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-danger">가입</button>
+          </form>
+
+    </div>
+</div>
+</body>
+{% endblock %}
